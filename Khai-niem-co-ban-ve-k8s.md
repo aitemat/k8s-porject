@@ -1,0 +1,74 @@
+# I.Kubernetes là gì?
+Kubernetes là một hệ thống quản lý vùng chứa mã nguồn mở và miễn phí cung cấp một nền tảng để tự động hóa việc triển khai, mở rộng quy mô và hoạt động của các vùng chứa ứng dụng trên các nhóm máy tính chủ.
+## 1. Master Node gì gì?
+Master Node trong Kubernetes được hiểu là server điều khiển các máy Worker chạy ứng dụng. Theo như thông tin cập nhật được thì Master Node trong K8S được phân chia thành 4 phần chính như sau:
+
+**Kubernetes API Server**: Đây là một trong những thành phần chính vô cùng quan trọng của Master Node. Thành phần này có nhiệm vụ giúp các thành phần khác liên lạc, nói chuyện với nhau. Các lập trình viên khi triển khai các ứng dụng sẽ gọi API Kubernetes API Server này. Vậy nên Kubernetes API Server mới được đánh giá là thành phần quan trọng của Master Node.  
+**Scheduler**: Đây là thành phần lập lịch. Có nghĩa là thành phần này sẽ tiến hành lập lịch trình triển khai cho các ứng dụng. Các ứng dụng được đặt vào Worker nào để chạy,…thì thành phần Scheduler phải lên lịch cụ thể.  
+**Controller Manager**: Thành phần này trong Master Node có nhiệm vụ quản lý các Worker. Đồng thời thành phần này cũng sẽ là thành phần chính thực hiện việc kiểm tra các Worker sống hay chết và đảm nhận luôn việc nhân bản ứng dụng.  
+**Etcd**: Đây là thành phần cuối cùng cấu thành Master Node. Thành phần này là cơ sở dữ liệu của Kubernetes. Tất cả các thông tin của Kubernetes đều sẽ được lưu trữ cố định vào Etcd.
+## 2. Worker Node là gì?
+Worker Node trong Kubernetes là gì? Bạn có thể hiểu Worker Node trong Kubernetes chính là server chạy ứng dụng trên đó. Cũng giống như Master Node thì Worker Node trong Kubernetes cũng sở hữu nhiều thành phần quan trọng. Trong đó đáng chú ý nhất chính là 3 thành phần chính được liệt kê sau đây.
+
+**Container Runtime**: Đây là một trong những thành phần có vai trò giúp chạy các ứng dụng trong Kubernetes chạy dưới dạng Container. Thông thường người ta sẽ sử dụng Docker.  
+**Kubelet**: Thành phần Kubelet là thành phần giao tiếp với Kubernetes API Server. Đồng thời Kubelet cũng là thành phần chính chịu trách nhiệm quản lý các Container trong Kubernetes.  
+**Kubernetes Service Proxy**: Thành phần này có nhiệm vụ chính là đảm nhiệm công việc phân tải giữa các ứng dụng.
+## 3. Desired State and the Declarative Model
+**Kubernetes** (k8s) sử dụng mô hình trạng thái mong muốn (desired state model) là phương pháp khai báo để quản lý cơ sở hạ tầng.
+Trong mô hình trạng thái mong muốn, Kubernetes cho phép các nhà phát triển và quản trị viên mô tả trạng thái mong muốn của hệ thống bằng cách sử dụng các tệp cấu hình YAML hoặc JSON khai báo. Tệp cấu hình này là mô tả về trạng thái mong muốn của hệ thống cần được tạo hoặc cập nhật. Kubernetes so sánh trạng thái hiện tại của hệ thống với trạng thái mong muốn được chỉ định trong tệp cấu hình và tiến hành các hành động cần thiết để đưa trạng thái thực tế của hệ thống đến trạng thái mong muốn.
+Mô hình này giúp quản lý cơ sở hạ tầng nhanh hơn, tin cậy hơn và có khả năng mở rộng tốt hơn bằng cách tự động triển khai, mở rộng và quản lý ứng dụng và dịch vụ. Các tệp cấu hình khai báo giúp duy trì trạng thái hạ tầng, giúp dễ dàng lý giải những thay đổi, quay trở lại các cập nhật và đảm bảo tính lặp lại trên nhiều lần triển khai.
+Trong mô hình này, người dùng xác định cấu hình trạng thái mong muốn và Kubernetes Control Plane liên tục hoạt động để đảm bảo rằng trạng thái thực tế của cơ sở hạ tầng phù hợp với trạng thái mong muốn. Phương pháp này giúp tự động hóa việc triển khai, mở rộng và quản lý các ứng dụng được đóng gói dưới dạng container, giảm thiểu lỗi và tăng hiệu quả của hệ thống.
+## 4. Pods là gì?
+**Pod** là quan trọng nhất trên Kubernetes. Bởi vì bản thân Pod đã có thể chứa 1 hoặc rất nhiều Container khác nhau. Vì vậy có thể nói, Pod chính là nơi mà các ứng dụng hoàn toàn có thể chạy trong đó. Không chỉ vậy, Pod còn là các tiến trình nằm trên các Worker Node. Bản thân Pod đã có tài nguyên riêng về File System, CPU, RAM, Volumes, địa chỉ Network,…
+## 5. Services là gì?
+**Service** là phần mạng của Kubernetes. Service trong Kubernetes giúp cho các Pod gọi nhau ổn định hơn. Hoặc giúp quá trình Load Balancing giữa nhiều bản sao của Pod. Các Kubernetes Service Proxies sẽ tự động nhận các yêu cầu dịch vụ tới Pod thích hợp. Bất kể nó di chuyển đến đâu trong cụm hoặc ngay cả khi nó được thay thế thì quá trình vẫn không bị gián đoạn. Từ đó giúp người dùng có thể dễ dàng sử dụng được ứng dụng.
+## Deployments là gì?
+**Deployment** là khái niệm về cách thức giúp triển khai, cập nhật, quản trị các Pod trong Kubernetes. Với sự hiện diện của Deployment sẽ giúp người dùng triển khai, cập nhật và quản trịnh những Pod thông dụng trở nên dễ dàng, thuận tiện hơn. 
+## 6. Kubectl
+Kubectl là một trong những công cụ cấu hình dòng lệnh cho Kubernetes. Tool quản trị K8S, được cài đặt trên các máy trạm. Kubectl cho phép các lập trình viên đẩy các ứng dụng mô tả triển khai vào cụm Kubernetes. Đồng thời Kubectl cũng cho phép các quản trị viên có thể quản trị được các cụm Kubernetes. 
+## 7. Image
+Image trong Kubernetes là phần mềm chạy ứng dụng đã được gọi lại thành một chương trình để có thể chạy duwois dạng Container. Các Pod  trong Kubernetes sẽ tiến hành sử dụng các Image để chạy. 
+
+Thông thường các Image trong Kubernetes sẽ được quản lý ở một nơi lưu trữ tập trung. Ví dụ như bạn có Docker Hub là nơi chứa Image của nhiều ứng dụng phổ biến như:
+
+Nginx
+Mysql
+WordPress
+….
+## 8. Label
+Label ra đời đảm đương nhiệm vụ chính là phân loại và quản lý Pod. Đặc biệt Label sẽ giúp đánh nhãn các Pod thông qua Frontend, Backend trên nền Dev, QC, UAT, Production,….
+## 9. Kubeadm
+Kubeadm là một công cụ cài đặt khởi động nhanh dành cho Kubernetes.
+Nó giúp tạo một cluster khả thi tối thiểu, với một master node duy nhất. Kubeadm rất nhanh và dễ sử dụng. Thêm vào đó, nó đảm bảo các cluster tuân theo những phương pháp tốt nhất. Do đó, Kubeadm là một công cụ tuyệt vời với những người mới sử dụng Kubernetes. Ngoài ra, ta cũng có thể dùng Kubeadm trong việc kiểm thử các ứng dụng.
+## 10. Minikube
+Minikube là một phiên bản nhẹ hơn của Kubernetes. Đồng thời nó cũng dễ sử dụng nội bộ hơn. Nó sẽ tạo một máy ảo (VM) trên máy cục bộ, tại đó ta có thể chạy một single-node cluster. Việc này cũng rất hữu ích cho việc thử nghiệm.
+
+# II. Ứng dụng Kubernetes
+Chức năng của Kubernetes là gì? Kubernetes là một nền tảng mã nguồn mở rộng đảm đương nhiều nhiều vụ quan trọng trong việc hỗ trợ quản lý và phát triển các Container. Vì vậy các chức năng chính của Kubernetes khá đa dạng. Tuy nhiên những chức năng chính của Kubernetes có thể kể đến như:  
+## 1. Cân bằng tải
+Kubernetes quản lý rất nhiều Docker Host bằng cách tạo ra các Container Cluster. Tuy nhiên khi chạy một Container trên Kubernetes thì việc triển khai các phiên bản giống nhau sẽ diễn ra. K8S được sử dụng sẽ cung cấp chức năng cân băng tải tự động và tăng khả năng chịu lỗi. Ngoài ra, việc sở hữu chức năng cân bằng tải (load balancing) mà Kubernetes cũng có thể tự thực hiện autoscaling – Tự động tăng giảm số lượng Replicas. Điều này giúp việc triển khai được ổn định hơn.
+## 2. Điều chỉnh bộ nhớ
+Bởi vì K8S cho phép người dùng tự động Mount một hệ thống lưu trữ mà mình lựa chọn. Chẳng hạn như lựa chọn các hệ thống lưu trữ Local Storages, Public Cloud Providers,…một cách tự do mà không gặp phải trở ngại hay rào cản gì. 
+Với chức năng này, người dùng hoàn toàn có thể tự điều chỉnh bộ nhớ sao cho phù hợp với nhu cầu và mục đích sử dụng mà mình cần. Vậy nên đây được xem là một trong những chức năng quan trọng của Kubernetes được đông đảo người dùng đánh giá cao khi sử dụng.
+## 3. Tự động phát hành và thu hồi
+Kubernetes hỗ trợ người dùng thêm một chức năng vô cùng quan trọng khác đó là chức năng tự động phát và thu hồi. Có nghĩa người dùng có thể tiến hành mô tả trạng thái mong muốn cho các Container thông qua việc sử dụng K8S. K8S có thể giúp làm thay đổi trạng thái thực tế sang trạng thái mong muốn của người dùng với tần suất được kiểm soát. 
+Nói một cách dễ hiểu hơn, bạn có thể tự động hóa K8S để tạo mới các Container cho việc triển khai của bạn. Thực hiện xóa các Container hiện có và áp dụng tất cả các Resource của chúng cho Container mới được tạo nên mà không gây ra bất cứ ảnh hưởng nào cho hệ thống. 
+## 4. Tự phục hồi
+Chức năng này hoạt động kích hoạt Kubernetes khởi động lại các Container bị lỗi, thay thế các Container, xóa các Container không phản hồi lại cấu hình Health Check Do người dùng xác định. Kubernetes sẽ ngăn chặn và không cho các Client biết đến các Container bị lỗi, bị thay thế, bị xóa cho đến khi chức năng chúng được phục hồi và sẵn sàng hoạt động.
+## 5. Quản lý cấu hình
+Trong rất nhiều chức năng quan trọng của Kubernetes thì chức năng quản lý cấu hình được đánh giá có vai trò quan trọng nhất. Bởi vì khi Kubernetes cho phép người dùng thực hiện quá trình lưu trữ và quản lý các thông tin nhạy cảm thì bạn có thể triển khải, cập nhật lại Secret và cấu hình lại ứng dụng một cách hiệu quả. 
+Thông thường bạn phải cần Build lại các Container Image. Đồng thời bạn phải tiết lộ Secret trong cấu hình Stack của mình mới có thể thực hiện việc lưu trữ, quản lý thông tin Password, Oauth Token và SSH Key,…Những với tính năng quản lý cấu hình mà K8S cung cấp thì việc quản lý, lưu trữ thông tin nhạy cảm trở nên dễ dàng, thuận lợi hơn.
+# III. Cách hoạt động của Kubernetes
+Cần biết rằng mỗi triển khai một Kubernetes đang hoạt động được gọi là một cluster. Ta có thể hình dung Kubernetes cluster gồm hai phần: một control plane và một máy tính toán (compute machine) – node.
+Mỗi node là một môi trường Linux của chính nó, đó có thể là một máy vật lý hay máy ảo. Mỗi node sẽ chạy các pod được tạo từ những container.  
+<img src="https://maychusaigon.vn/wp-content/uploads/2022/11/cong-dung-cua-kubernetes-maychusaigon.jpg">  
+Control plane có nhiệm vụ duy trì trạng thái mong muốn của cluster. Chẳng hạn như ứng dụng đang chạy hay container image đang được sử dụng. Còn compute machine sẽ chạy các ứng dụng và workload.
+Kubernetes control plane nhận các lệnh từ admin (hay DevOps team) và chuyển tiếp các lệnh đó đến compute machine. Việc này sẽ hoạt động với vô số dịch vụ để tự động quyết định node phù hợp nhất cho task. Tiếp đến, nó sẽ phân bổ tài nguyên và chỉ định các pod trong node để hoàn thành công việc được yêu cầu.
+
+Trạng thái mong muốn của một cluster sẽ xác định các ứng dụng hoặc workload nên chạy. Cùng với đó là quyết định những image nào sẽ sử dụng, các tài nguyên nào nên được cung cấp và nhiều chi tiết cấu hình khác.
+
+Xét về cơ sở hạ tầng, có rất ít thay đổi với cách ta quản lý container. Quyền kiểm soát container chỉ xảy ra ở một cấp độ cao hơn, giúp kiểm soát tốt hơn mà không cần phải quản lý vi mô từng container hay node riêng biệt.
+
+Công việc của ta liên quan đến việc cấu hình Kubernetes, xác định node, pod và container bên trong chúng. Còn Kubernetes sẽ xử lý việc sắp xếp các container.
+
+Ta có thể tự do lựa chọn nơi sử dụng Kubernetes. Có thể là trên bare metal server, máy ảo, nhà cung cấp public cloud, private cloud hay môi trường hybrid cloud. Một trong những ưu điểm chính của Kubernetes là nó có thể hoạt động trên nhiều cơ sở hạ tầng khác nhau.
