@@ -29,7 +29,7 @@ spec:
   type: NodePort
   ports:
     - port: 8443
-      nodePort: 30002
+      nodePort: 31000
       targetPort: 8443
       protocol: TCP
   selector:
