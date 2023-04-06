@@ -1,1 +1,2 @@
-
+# Scheduling workload trong Kubernetes
+Kubernetes có thể lên lịch (schedule) các workload (nhiệm vụ) để chạy trên các nodes (nút) trong cluster (bản rải đều). Bạn có thể thực hiện lên lịch workload bằng nhiều cách khác nhau, ví dụ như sử dụng Kubernetes Dashboard hoặc kubectl command-line interface.
