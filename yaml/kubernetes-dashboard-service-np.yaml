@@ -29,7 +29,7 @@ spec:
   ports:
   - name: https
     port: 443
-    nodePort: 30002
+    nodePort: 31000
     targetPort: 8443
     protocol: TCP
 selector:
