@@ -16,5 +16,5 @@ Các phần đã tìm hiểu:
 
 Link: [7.5.Auto-scaling.md](https://github.com/aitemat/k8s-project/blob/main/7.5.Auto-scaling.md)
 
-## Link tìm hiều tổng hợp
+## Link tìm hiểu tổng hợp
 [Tổng hợp tìm hiểu k8s](https://github.com/aitemat/k8s-project)
