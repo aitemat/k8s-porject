@@ -15,3 +15,6 @@ Các phần đã tìm hiểu:
 - Các khái niệm.  
 
 Link: [7.5.Auto-scaling.md](https://github.com/aitemat/k8s-project/blob/main/7.5.Auto-scaling.md)
+
+## Link tìm hiều tổng hợp
+[Tổng hợp tìm hiểu k8s](https://github.com/aitemat/k8s-project)
