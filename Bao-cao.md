@@ -12,5 +12,6 @@ Link: [7.4.Storage-Persistent-volume-iSCSI.md](https://github.com/aitemat/k8s-pr
 ## Auto Scale
 Phần auto scale thì em vẫn đang tìm hiểu, document chưa đầy đủ:
 Các phần đã tìm hiểu: 
-- Các khái niệm.
+- Các khái niệm.  
+
 Link: [7.5.Auto-scaling.md](https://github.com/aitemat/k8s-project/blob/main/7.5.Auto-scaling.md)
