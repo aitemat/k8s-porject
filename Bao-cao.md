@@ -10,7 +10,7 @@ Trong tuần rồi thì em có tìm hiểu về persistent volume với iSCSI:
 
 Link: [7.4.Storage-Persistent-volume-iSCSI.md](https://github.com/aitemat/k8s-project/blob/main/7.4.Storage-Persistent-volume-iSCSI.md)  
 ## Auto Scale
-Phần auto scale thì em vẫn đang tìm hiểu, document chưa đầy đủ:
+Phần auto scale thì em vẫn đang tìm hiểu, document chưa đầy đủ:  
 Các phần đã tìm hiểu: 
 - Các khái niệm.  
 
