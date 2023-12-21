@@ -18,3 +18,7 @@ Link: [7.5.Auto-scaling.md](https://github.com/aitemat/k8s-project/blob/main/7.5
 
 ## Link tìm hiểu tổng hợp
 [Tổng hợp tìm hiểu k8s](https://github.com/aitemat/k8s-project)
+
+# Update ngày 21-12-2023  
+## Config các pod thông qua haproxy
+Link: [3.6.Setup-web-nginx-thong-qua-haproxy.md](https://github.com/aitemat/k8s-project/blob/main/3.6.Setup-web-nginx-thong-qua-haproxy.md)  
